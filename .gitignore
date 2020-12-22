@@ -1,4 +1,4 @@
 .python-version
-Pipfile
-Pipfile.lock
-.venv/
+/Pipfile
+/Pipfile.lock
+/.venv/
