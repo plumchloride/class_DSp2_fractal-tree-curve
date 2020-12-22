@@ -15,7 +15,9 @@ def zyumoku(num,count,ri_count):
         elif ri_count == 1:
             num = back(num)
             left(30)
-            num *= 3/2
+            num = back(num)
+            right(90)
+            zyumoku(num,count-2,ri_count-1)
 
     else:
         left(30)
