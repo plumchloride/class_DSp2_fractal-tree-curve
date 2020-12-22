@@ -9,27 +9,25 @@ right(30)
 def zyumoku(num,count,ri_count):
     if count == 5:
         if ri_count == 0:
-            num *= 3/2
-            forward(-num)
+            num = back(num)
             right(90)
-            zyumoku(num,count-1,ri_count+1)  
+            zyumoku(num,count-1,ri_count+1)
+        elif ri_count == 1:
+            num = back(num)
+            left(30)
+            num *= 3/2
 
     else:
         left(30)
         forward(num)
-        zyumoku(num * 2 / 3,count + 1, ri_count, ri_count_2)
-    
-zyumoku(f,0,0)
-# forward(f)
-# left(20)
-# forward(f*2/3)
-# left(20)
-# forward(f*4/9)
-# left(20)
-# forward(f*8/27)
-# left(20)
-# forward(f*16/81)
+        zyumoku(num * 2 / 3,count + 1, ri_count)
 
+def back(a):
+    a*=3/2
+    forward(-a)
+    return a
+
+zyumoku(f,0,0)
 
 mainloop()
 done()
