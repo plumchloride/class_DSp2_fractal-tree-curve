@@ -1,5 +1,9 @@
 from turtle import *
 
+
+speed(1) #何が起きているかわかりやすいようにスピード調節
+
+# nを変えてもきちんと動く（枝は重なるが）
 def zyumoku_again(x,y,f_int,head,angle,n):
     penup()
     goto(x,y)
@@ -21,8 +25,7 @@ done()
 
 
 # 再帰関数のことがよくわからなかったが、とりあえず試行錯誤した物
-# さすがにこれは再帰関数とは呼べないのでは？
-# => 再帰関数について多少学んだが、処理が終わると前の再帰に戻ることが判明。これを利用すればなんとかなるのでは。
+# さすがにこれは再帰関数とは呼べないのでは？ 
 def zyumoku(num,count,ri_count,husa):
     if count == 5:
         if ri_count == 0:
@@ -62,7 +65,12 @@ def back(a):
     forward(-a)
     return a
 
-# zyumoku(f,0,0,1)
+#left(90)
+# penup()
+# forward(-200)
+# pendown()
+# right(30)
+# zyumoku(200,0,0,1)
 
 # mainloop()
 # done()
