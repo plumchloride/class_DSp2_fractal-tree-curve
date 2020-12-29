@@ -5,20 +5,20 @@ speed(1) #何が起きているかわかりやすいようにスピード調節
 
 # nを変えてもきちんと動く（枝は重なるが）
 def zyumoku_again(x,y,f_int,head,angle,n):
-    penup()
-    goto(x,y)
-    pendown()
-    setheading(head)
-    left(angle)
-    forward(f_int)
-    x = xcor()
-    y = ycor()
-    head = heading()
-    if n > 0:
-        zyumoku_again(x,y,f_int*2/3,head,30,n-1)
-        zyumoku_again(x,y,f_int*2/3,head,-30,n-1)
+    penup()                                                     #ペンをあげる
+    goto(x,y)                                                   #枝の根元に移動
+    pendown()                                                   #ペンを下げる
+    setheading(head)                                            #頭の角度を枝の角度とそろえる
+    left(angle)                                                 #左or右に30度向く(初回のみ0度)
+    forward(f_int)                                              #決められた長さだけ前に進む
+    x = xcor()                                                  #移動した先のx座標の保存(次に再帰する際の根元のx座標)
+    y = ycor()                                                  #移動した先のy座標の保存(次に再帰する際の根元のy座標)
+    head = heading()                                            #自分の頭の位置を保存(次に再帰した際の頭の角度)
+    if n > 0:                                                   #規定されている再帰の回数に達した場合終了させる
+        zyumoku_again(x,y, f_int * 2/3, head, 30, n-1)          #左枝(角度30度)の作成　枝長さを2/3にして再帰回数を-1にしている
+        zyumoku_again(x,y, f_int * 2/3, head, -30, n-1)         #右枝(角度-30度)の作成　枝長さを2/3にして再帰回数を-1にしている
 
-zyumoku_again(0,-200,200,60,30,4)
+zyumoku_again(0,-200,200,90,0,4)                               #(0,-200)の地点からはじめの枝の長さ200で絶対角度角度90度で4回枝分かれする。
 
 mainloop()
 done()
@@ -74,3 +74,5 @@ def back(a):
 
 # mainloop()
 # done()
+
+#一応gitで管理して作成していたリポジトリのURL(https://github.com/plumchloride/class_DSp2_fractal-tree-curve)
