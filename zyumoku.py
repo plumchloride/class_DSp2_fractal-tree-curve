@@ -1,23 +1,20 @@
 from turtle import *
 
-f = 200
-
-left(90)
-forward(-200)
-forward(200)
-
-
-
-def zyumoku_again(f_int,angle,n):
+def zyumoku_again(x,y,f_int,head,angle,n):
+    penup()
+    goto(x,y)
+    pendown()
+    setheading(head)
     left(angle)
     forward(f_int)
-    forward(-f_int)
-    left(-angle)
+    x = xcor()
+    y = ycor()
+    head = heading()
     if n > 0:
-        zyumoku_again(f_int*2/3,angle,n-1)
-        zyumoku_again(f_int*2/3,-angle,n-1)
+        zyumoku_again(x,y,f_int*2/3,head,30,n-1)
+        zyumoku_again(x,y,f_int*2/3,head,-30,n-1)
 
-zyumoku_again(f*2/3,30,4)
+zyumoku_again(0,-200,200,60,30,4)
 
 mainloop()
 done()
@@ -25,6 +22,7 @@ done()
 
 # 再帰関数のことがよくわからなかったが、とりあえず試行錯誤した物
 # さすがにこれは再帰関数とは呼べないのでは？
+# => 再帰関数について多少学んだが、処理が終わると前の再帰に戻ることが判明。これを利用すればなんとかなるのでは。
 def zyumoku(num,count,ri_count,husa):
     if count == 5:
         if ri_count == 0:
